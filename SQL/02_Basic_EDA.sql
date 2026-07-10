@@ -292,3 +292,206 @@ LIMIT 10;
 -- Business Insight:
 -- New York City is the highest revenue-generating city.
 -- The Top 10 cities contribute significantly to the company's overall sales, indicating key metropolitan markets drive business performance.
+
+
+
+
+-- Business Question 22:
+-- Show the Top 10 Cities by Total Profit.
+
+SELECT city,
+       ROUND(SUM(profit),2) AS Total_Profit
+FROM orders
+GROUP BY city
+ORDER BY Total_Profit DESC
+LIMIT 10;
+
+-- Business Insight:
+-- New York City is the most profitable city, generating a total profit of 62,036.98.
+-- Los Angeles and Seattle also contribute significantly to the company's profitability,
+-- indicating that major metropolitan areas are key profit centers.
+
+
+
+
+
+-- Business Question 23:
+-- Show the Top 10 Customers by Total Sales.
+
+SELECT customer_id,
+       customer_name,
+       ROUND(SUM(sales),2) AS Total_Sales
+FROM orders
+GROUP BY customer_id, customer_name
+ORDER BY Total_Sales DESC
+LIMIT 10;
+
+-- Business Insight:
+-- Sean Miller is the highest revenue-generating customer with total purchases of 25,043.05.
+-- The Top 10 customers contribute significantly to overall sales, highlighting the importance of retaining high-value customers.
+
+
+-- Business Question 24:
+-- Show the Top 10 Customers by Total Profit.
+
+SELECT customer_id,
+       customer_name,
+       ROUND(SUM(profit),2) AS Total_Profit
+FROM orders
+GROUP BY customer_id, customer_name
+ORDER BY Total_Profit DESC
+LIMIT 10;
+
+-- Business Insight:
+-- Tamara Chand is the most profitable customer, contributing 8,981.32 in total profit.
+-- Retaining high-profit customers is important because they have a significant impact on overall business profitability.
+
+
+-- Business Question 25:
+-- Show the Top 10 Customers by Number of Orders.
+
+SELECT customer_id,
+       customer_name,
+       COUNT(DISTINCT order_id) AS Total_Orders
+FROM orders
+GROUP BY customer_id, customer_name
+ORDER BY Total_Orders DESC
+LIMIT 10;
+
+-- Business Insight:
+-- Emily Phan placed the highest number of unique orders (17).
+-- Customers with frequent purchases are valuable because they demonstrate strong engagement and repeat buying behavior.
+
+
+-- Business Question 26:
+-- Which customer segment generated the highest sales?
+
+SELECT segment,
+       ROUND(SUM(sales),2) AS Total_Sales
+FROM orders
+GROUP BY segment
+ORDER BY Total_Sales DESC
+LIMIT 1;
+
+-- Business Insight:
+-- The Consumer segment generated the highest sales, contributing approximately 1.17 million in revenue.
+-- This indicates that individual consumers are the company's largest source of sales.
+
+
+
+-- Business Question 27:
+-- Which customer segment generated the highest profit?
+
+SELECT segment,
+       ROUND(SUM(profit),2) AS Total_Profit
+FROM orders
+GROUP BY segment
+ORDER BY Total_Profit DESC
+LIMIT 1;
+
+-- Business Insight:
+-- The Consumer segment generated the highest profit, contributing approximately 136,371 in total profit.
+-- This indicates that the Consumer segment is the company's strongest contributor in terms of both sales and profitability.
+
+
+
+-- Business Question 28:
+-- Which customers have the highest Average Order Value (Top 10)?
+
+SELECT
+    customer_id,
+    customer_name,
+    ROUND(SUM(sales) / COUNT(DISTINCT order_id), 2) AS Average_Order_Value
+FROM orders
+GROUP BY customer_id, customer_name
+ORDER BY Average_Order_Value DESC
+LIMIT 10;
+
+-- Business Insight:
+-- Average Order Value (AOV) measures the average amount spent by a customer per order.
+-- Customers with a high AOV place fewer but higher-value orders, making them valuable for premium product marketing and personalized sales strategies.
+-- These customers can be targeted with exclusive offers, premium memberships, and cross-selling opportunities to maximize revenue.
+
+
+-- Business Question 29:
+-- Which customer segment has the highest Average Order Value?
+
+SELECT
+    segment,
+    ROUND(SUM(sales) / COUNT(DISTINCT order_id), 2) AS Average_Order_Value
+FROM orders
+GROUP BY segment
+ORDER BY Average_Order_Value DESC
+LIMIT 1;
+
+-- Business Insight:
+-- The Consumer segment has the highest Average Order Value (445).
+-- On average, Consumer customers spend more per order than customers in other segments, making them an attractive segment for premium product offerings and upselling campaigns.
+
+
+
+-- Business Question 30:
+-- Which year generated the highest sales?
+
+SELECT
+    YEAR(order_date) AS Year,
+    ROUND(SUM(sales),2) AS Total_Sales
+FROM orders
+GROUP BY YEAR(order_date)
+ORDER BY Total_Sales DESC
+LIMIT 1;
+
+-- Business Insight:
+-- The year 2026 generated the highest total sales in the dataset.
+-- This indicates that business revenue reached its peak during 2026, suggesting strong growth compared to previous years.
+
+
+
+-- Business Question 31:
+-- Show total sales for each year.
+
+SELECT
+    YEAR(order_date) AS Year,
+    ROUND(SUM(sales),2) AS Total_Sales
+FROM orders
+GROUP BY YEAR(order_date)
+ORDER BY Total_Sales DESC;
+
+-- Business Insight:
+-- Sales increased significantly over the years, with 2026 generating the highest revenue (745,567.53).
+-- This trend indicates positive business growth over time, although 2024 recorded lower sales than 2023, suggesting a temporary decline before strong recovery in 2025 and 2026.
+
+
+-- Business Question 32:
+-- Which month generated the highest sales?
+
+SELECT
+    MONTHNAME(order_date) AS Month_Name,
+    ROUND(SUM(sales),2) AS Total_Sales
+FROM orders
+GROUP BY MONTHNAME(order_date)
+ORDER BY Total_Sales DESC
+LIMIT 1;
+
+-- Business Insight:
+-- November generated the highest sales (352,665.99).
+-- This may indicate strong seasonal demand, festive shopping, or promotional campaigns during November.
+
+
+
+-- Business Question 34:
+-- Which month generated the highest profit?
+
+SELECT
+    MONTHNAME(order_date) AS Month_Name,
+    ROUND(SUM(profit),2) AS Total_Profit
+FROM orders
+GROUP BY MONTHNAME(order_date)
+ORDER BY Total_Profit DESC
+LIMIT 1;
+
+-- Business Insight:
+-- __________ generated the highest profit, contributing __________ in total profit.
+-- This indicates that the business earns the highest profitability during this month,
+-- making it an important period for maximizing revenue and profit through effective
+-- inventory planning, marketing campaigns, and promotional strategies.
