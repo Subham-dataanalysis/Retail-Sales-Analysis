@@ -217,3 +217,78 @@ LIMIT 10;
 -- Business Insight:
 -- These products generate the highest losses for the company.
 -- Management should investigate pricing, discount policies, return rates, and procurement costs for these products to improve profitability.
+
+
+-- Business Question 17:
+-- Which region generated the highest sales?
+
+SELECT region,
+       ROUND(SUM(sales),2) AS Total_Sales
+FROM orders
+GROUP BY region
+ORDER BY Total_Sales DESC
+LIMIT 1;
+
+-- Business Insight:
+-- The West region generated the highest sales, contributing 739,813.61 in total revenue.
+-- This indicates strong customer demand and sales performance in the West region.
+
+
+-- Business Question 18:
+-- Which region generated the highest profit?
+
+SELECT region,
+       ROUND(SUM(profit),2) AS Total_Profit
+FROM orders
+GROUP BY region
+ORDER BY Total_Profit DESC
+LIMIT 1;
+
+-- Business Insight:
+-- The West region generated the highest profit, contributing 110,798.82 in total profit.
+-- This indicates that the region is not only the highest revenue generator but also the most profitable.
+
+
+-- Business Question 19:
+-- Which state generated the highest sales?
+
+SELECT state_province,
+       ROUND(SUM(sales),2) AS Total_Sales
+FROM orders
+GROUP BY state_province
+ORDER BY Total_Sales DESC
+LIMIT 1;
+
+-- Business Insight:
+-- California generated the highest sales, contributing 457,687.63 in total revenue.
+-- This suggests California is the company's strongest-performing state by sales.
+
+
+-- Business Question 20:
+-- Which state generated the highest profit?
+
+SELECT state_province,
+       ROUND(SUM(profit),2) AS Total_Profit
+FROM orders
+GROUP BY state_province
+ORDER BY Total_Profit DESC
+LIMIT 1;
+
+-- Business Insight:
+-- California generated the highest profit, contributing 76,381.39 in total profit.
+-- Along with leading in sales, California is also the most profitable state in the dataset.
+
+
+-- Business Question 21:
+-- Show the Top 10 Cities by Total Sales.
+
+SELECT city,
+       ROUND(SUM(sales),2) AS Total_Sales
+FROM orders
+GROUP BY city
+ORDER BY Total_Sales DESC
+LIMIT 10;
+
+-- Business Insight:
+-- New York City is the highest revenue-generating city.
+-- The Top 10 cities contribute significantly to the company's overall sales, indicating key metropolitan markets drive business performance.
