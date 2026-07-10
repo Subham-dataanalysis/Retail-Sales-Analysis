@@ -126,3 +126,94 @@ LIMIT 1;
 -- Business Insight:
 -- Office Supplies has the highest average discount among all product categories.
 -- This suggests discounts may be used more frequently in this category to drive sales.
+
+
+-- Business Question 11:
+-- Which sub-category generated the highest sales?
+
+SELECT sub_category,
+       ROUND(SUM(sales),2) AS Total_Sales
+FROM orders
+GROUP BY sub_category
+ORDER BY Total_Sales DESC
+LIMIT 1;
+
+-- Business Insight:
+-- Chairs is the highest revenue-generating sub-category, contributing total sales of 335,768.25.
+
+
+
+-- Business Question 12:
+-- Which sub-category generated the highest profit?
+
+SELECT sub_category,
+       ROUND(SUM(profit),2) AS Total_Profit
+FROM orders
+GROUP BY sub_category
+ORDER BY Total_Profit DESC
+LIMIT 1;
+
+-- Business Insight:
+-- Copiers is the most profitable sub-category, generating a total profit of 56,093.94.
+
+
+-- Business Question 13:
+-- Which sub-category generated the lowest profit?
+
+SELECT sub_category,
+       ROUND(SUM(profit),2) AS Total_Profit
+FROM orders
+GROUP BY sub_category
+ORDER BY Total_Profit ASC
+LIMIT 1;
+
+-- Business Insight:
+-- Tables is the least profitable sub-category, with a total loss of 17,753.21.
+-- This indicates that the business should investigate pricing, discounts, costs, and returns related to this sub-category.
+
+
+-- Business Question 14:
+-- Show the Top 10 Products by Total Sales.
+
+SELECT product_name,
+       ROUND(SUM(sales),2) AS Total_Sales
+FROM orders
+GROUP BY product_name
+ORDER BY Total_Sales DESC
+LIMIT 10;
+
+-- Business Insight:
+-- High-value office equipment and technology products dominate the top-selling products.
+-- Products such as Canon imageCLASS 2200 Advanced Copier and Cisco TelePresence System
+-- contribute significantly to overall sales.
+
+
+
+-- Business Question 15:
+-- Show the Top 10 Products by Total Profit.
+
+SELECT product_name,
+       ROUND(SUM(profit),2) AS Total_Profit
+FROM orders
+GROUP BY product_name
+ORDER BY Total_Profit DESC
+LIMIT 10;
+
+-- Business Insight:
+-- High-end technology products, especially copiers and printers, generate the highest profits.
+-- The Canon imageCLASS 2200 Advanced Copier is the most profitable product, contributing 25,199.93 in total profit.
+
+
+-- Business Question 16:
+-- Show the Top 10 Loss-Making Products.
+
+SELECT product_name,
+       ROUND(SUM(profit),2) AS Total_Profit
+FROM orders
+GROUP BY product_name
+ORDER BY Total_Profit ASC
+LIMIT 10;
+
+-- Business Insight:
+-- These products generate the highest losses for the company.
+-- Management should investigate pricing, discount policies, return rates, and procurement costs for these products to improve profitability.
