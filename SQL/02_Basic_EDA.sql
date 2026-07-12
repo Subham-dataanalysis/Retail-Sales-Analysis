@@ -495,3 +495,75 @@ LIMIT 1;
 -- This indicates that the business earns the highest profitability during this month,
 -- making it an important period for maximizing revenue and profit through effective
 -- inventory planning, marketing campaigns, and promotional strategies.
+
+
+
+-- Business Question 35:
+-- Show total profit for all months.
+
+SELECT
+    MONTHNAME(order_date) AS Month_Name,
+    ROUND(SUM(profit),2) AS Total_Profit
+FROM orders
+GROUP BY MONTHNAME(order_date)
+ORDER BY Total_Profit DESC;
+
+-- Business Insight:
+-- The monthly profit analysis highlights the company's most and least profitable months.
+-- Identifying profitable months helps management plan inventory, marketing campaigns,
+-- and resource allocation more effectively.
+-- Comparing monthly sales and profit can also reveal whether high revenue months
+-- are equally profitable or are affected by discounts and operating costs.
+
+
+-- Business Question 36:
+-- Which quarter generated the highest sales?
+
+SELECT
+    QUARTER(order_date) AS Quarter,
+    ROUND(SUM(sales),2) AS Total_Sales
+FROM orders
+GROUP BY QUARTER(order_date)
+ORDER BY Total_Sales DESC
+LIMIT 1;
+
+-- Business Insight:
+-- Quarter __4___ generated the highest sales in the dataset.
+-- This quarter represents the strongest revenue period for the business,
+-- indicating increased customer demand and sales performance.
+
+
+
+
+-- Business Question 37:
+-- Show total sales for all quarters.
+
+SELECT
+    QUARTER(order_date) AS Quarter,
+    ROUND(SUM(sales),2) AS Total_Sales
+FROM orders
+GROUP BY QUARTER(order_date)
+ORDER BY Total_Sales DESC;
+
+-- Business Insight:
+-- Quarter-wise sales analysis helps identify seasonal business trends.
+-- Comparing quarterly performance enables management to evaluate growth,
+-- forecast future demand, and optimize business strategies throughout the year.
+
+
+
+-- Business Question 38:
+-- Which quarter generated the highest profit?
+
+SELECT
+    QUARTER(order_date) AS Quarter,
+    ROUND(SUM(profit),2) AS Total_Profit
+FROM orders
+GROUP BY QUARTER(order_date)
+ORDER BY Total_Profit DESC
+LIMIT 1;
+
+-- Business Insight:
+-- Quarter __4___ generated the highest profit in the dataset.
+-- This quarter contributed the greatest share of overall profitability,
+-- making it a key period for business performance and financial success.
